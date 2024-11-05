@@ -1,0 +1,26 @@
+﻿<Window x:Class="CompareApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Object Comparer" Height="450" Width="600">
+    <Grid>
+        <DataGrid x:Name="ComparisonGrid" AutoGenerateColumns="False" HeadersVisibility="Column" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Property" Binding="{Binding PropertyName}" Width="*"/>
+                <DataGridTextColumn Header="Object 1" Binding="{Binding Value1}" Width="*"/>
+                <DataGridTextColumn Header="Object 2" Binding="{Binding Value2}" Width="*"/>
+            </DataGrid.Columns>
+            <DataGrid.RowStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Status}" Value="Matching">
+                            <Setter Property="Background" Value="LightGreen"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Status}" Value="Not Matching">
+                            <Setter Property="Background" Value="LightCoral"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.RowStyle>
+        </DataGrid>
+    </Grid>
+</Window>
